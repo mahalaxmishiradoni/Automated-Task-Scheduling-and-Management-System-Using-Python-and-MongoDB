@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A focused daily briefing of global technology news."
+    >
+    <meta name="theme-color" content="#080b12">
+    <title>Signal — Daily Tech Briefing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Signal home">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="brand-name">signal<span class="brand-period">.</span></span>
+          <span class="brand-divider" aria-hidden="true"></span>
+          <span class="brand-caption">TECH BRIEFING</span>
+        </a>
+
+        <nav class="top-nav" aria-label="Main navigation">
+          <a class="nav-link nav-link-active" href="#latest">Discover</a>
+          <a class="nav-link" href="#topics">Topics</a>
+          <a class="nav-link" href="#about">About</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <span class="edition-label"><span class="live-dot"></span> DAILY EDITION</span>
+          <button class="icon-button refresh-button" id="refresh-button" type="button" aria-label="Refresh articles" title="Refresh articles">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 7v5h-5M4.8 9a7.5 7.5 0 0 1 12.5-2L20 12M4 17v-5h5m10.2 3a7.5 7.5 0 0 1-12.5 2L4 12"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE DAILY SIGNAL</p>
+            <h1 id="page-title">Technology, <span>in focus.</span></h1>
+            <p class="intro-description">
+              A clearer view of the ideas, people, and breakthroughs shaping what comes next.
+            </p>
+          </div>
+          <div class="today-card" aria-label="Today's edition">
+            <span class="today-label">YOUR DAILY BRIEFING</span>
+            <span class="today-date" id="today-date"></span>
+            <span class="today-detail">Global technology coverage</span>
+          </div>
+        </section>
+
+        <section class="featured-section" aria-labelledby="featured-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">EDITOR'S SIGNAL</p>
+              <h2 id="featured-heading">The story to know</h2>
+            </div>
+            <span class="section-index">01 <span>/</span> FEATURED</span>
+          </div>
+          <div id="featured-content" class="featured-slot" aria-live="polite">
+            <div class="featured-skeleton skeleton"></div>
+          </div>
+        </section>
+
+        <div class="content-layout" id="latest">
+          <section class="news-section" aria-labelledby="latest-heading">
+            <div class="news-section-heading">
+              <div>
+                <p class="eyebrow">STAY INFORMED</p>
+                <h2 id="latest-heading">Latest stories</h2>
+              </div>
+              <span id="article-count" class="article-count">Loading stories</span>
+            </div>
+
+            <div class="toolbar">
+              <label class="search-box" for="search-input">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                  <path d="m16 16 4.2 4.2"></path>
+                </svg>
+                <input
+                  id="search-input"
+                  type="search"
+                  maxlength="100"
+                  placeholder="Search stories, sources..."
+                  autocomplete="off"
+                >
+                <kbd>/</kbd>
+              </label>
+            </div>
+
+            <div class="topic-row" id="topics">
+              <span class="topic-label">EXPLORE TOPICS</span>
+              <div class="topic-chips" role="group" aria-label="Filter stories by category">
+                <button class="topic-chip is-active" type="button" data-category="" aria-pressed="true">All stories</button>
+                <button class="topic-chip" type="button" data-category="AI" aria-pressed="false">AI</button>
+                <button class="topic-chip" type="button" data-category="Python" aria-pressed="false">Python</button>
+                <button class="topic-chip" type="button" data-category="Cloud Computing" aria-pressed="false">Cloud</button>
+                <button class="topic-chip" type="button" data-category="Cybersecurity" aria-pressed="false">Security</button>
+                <button class="topic-chip" type="button" data-category="Technology Companies" aria-pressed="false">Companies</button>
+              </div>
+            </div>
+
+            <div id="news-grid" class="news-grid" aria-live="polite">
+              <div class="news-skeleton skeleton"></div>
+              <div class="news-skeleton skeleton"></div>
+              <div class="news-skeleton skeleton"></div>
+              <div class="news-skeleton skeleton"></div>
+            </div>
+            <div id="results-message" class="results-message" role="status" hidden></div>
+          </section>
+
+          <aside class="sidebar" id="about" aria-label="Briefing information">
+            <section class="sidebar-card collection-card">
+              <div class="sidebar-card-top">
+                <span class="sidebar-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4zM8 9h8M8 13h5"></path></svg>
+                </span>
+                <span class="sidebar-kicker">IN THIS EDITION</span>
+              </div>
+              <strong class="sidebar-number" id="sidebar-count">—</strong>
+              <span class="sidebar-caption">stories in this view</span>
+              <div class="sidebar-rule"></div>
+              <p class="sidebar-note">Curated across five technology topics. Use search and filters to find your signal.</p>
+            </section>
+
+            <section class="sidebar-card schedule-card">
+              <div class="sidebar-card-top">
+                <span class="sidebar-icon schedule-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3.5 2"></path></svg>
+                </span>
+                <span class="sidebar-kicker">DAILY UPDATE</span>
+              </div>
+              <h3>Fresh perspective,<br>every day.</h3>
+              <p class="sidebar-note">The API does not provide scheduler status, so live collection status is not shown here.</p>
+              <span class="schedule-status"><span class="status-indicator"></span> SCHEDULE STATUS UNAVAILABLE</span>
+            </section>
+
+            <div class="sidebar-footnote">
+              <span class="footnote-mark">S</span>
+              <p>Independent signal.<br>Global perspective.</p>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <a class="footer-brand" href="/" aria-label="Signal home">signal<span>.</span></a>
+        <span>THE WORLD, THROUGH TECHNOLOGY.</span>
+        <a class="back-to-top" href="#">BACK TO TOP ↑</a>
+      </footer>
+    </div>
+  </body>
+</html>
